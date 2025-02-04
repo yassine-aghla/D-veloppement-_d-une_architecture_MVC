@@ -19,6 +19,9 @@ $router = new Router();
 
 $router->addRoute('GET', '/', HomeController::class, 'index');
 $router->addRoute('GET', '/article', ArticleController::class, 'show');
+$router->addRoute('GET', '/insert-user', HomeController::class, 'createUser');
+$router->addRoute('GET', '/insert-article', ArticleController::class, 'createArticle');
+$router->addRoute('GET', '/admin/users', \App\Controllers\back\UserController::class, 'listUsers');
 // $router->addRoute('GET', 'admin/dashboard', 'Back\DashboardController', 'index');
 // $router->addRoute('GET', 'admin/users', 'Back\UserController', 'listUsers');
 // $router->addRoute('GET', 'test', 'Front\HomeController', 'index');

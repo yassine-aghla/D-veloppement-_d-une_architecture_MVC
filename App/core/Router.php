@@ -30,6 +30,7 @@ class Router {
             if ($route['path'] === $requestUri && $route['method'] === $requestMethod) {
                 // $controllerName = 'App\\Controllers\\' . $route['controller'];
                 $controllerName =  $route['controller'];
+
             
                 if (class_exists($controllerName)) {
                     $controller = new $controllerName();
