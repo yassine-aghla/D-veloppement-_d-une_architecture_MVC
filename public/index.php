@@ -11,7 +11,7 @@ use App\core\Router;
 
 use App\Controllers\Front\HomeController;
 use App\Controllers\Front\ArticleController;
-
+use App\Controllers\back\LoginController;
 $router = new Router();
 
 
@@ -19,9 +19,15 @@ $router = new Router();
 
 $router->addRoute('GET', '/', HomeController::class, 'index');
 $router->addRoute('GET', '/article', ArticleController::class, 'show');
-$router->addRoute('GET', '/insert-user', HomeController::class, 'createUser');
+// $router->addRoute('GET', '/insert-user', HomeController::class, 'createUser');
 $router->addRoute('GET', '/insert-article', ArticleController::class, 'createArticle');
 $router->addRoute('GET', '/admin/users', \App\Controllers\back\UserController::class, 'listUsers');
+$router->addRoute('GET', '/login', LoginController::class, 'showLoginForm');
+$router->addRoute('POST', '/login', LoginController::class, 'login');
+$router->addRoute('GET', '/logout', LoginController::class, 'logout');
+$router->addRoute('GET', '/dashboard', \App\Controllers\back\DashboardController::class, 'index');
+$router->addRoute('GET', '/signup', \App\Controllers\back\RegisterController::class, 'showRegisterForm');
+$router->addRoute('POST', '/signup', \App\Controllers\back\RegisterController::class, 'register');
 // $router->addRoute('GET', 'admin/dashboard', 'Back\DashboardController', 'index');
 // $router->addRoute('GET', 'admin/users', 'Back\UserController', 'listUsers');
 // $router->addRoute('GET', 'test', 'Front\HomeController', 'index');

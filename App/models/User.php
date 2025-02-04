@@ -36,4 +36,19 @@ class User {
             die("Erreur : " . $e->getMessage());
         }
     }
+    public function getUserByEmail($email) {
+        $sql = "SELECT * FROM users WHERE email = :email";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute(['email' => $email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+    public function createUser($username, $email, $password) {
+        $sql = "INSERT INTO users (username, email, password) VALUES (:username, :email, :password)";
+        $stmt = $this->pdo->prepare($sql);
+        return $stmt->execute([
+            'username' => $username,
+            'email' => $email,
+            'password' => $password
+        ]);
+    }
 }
