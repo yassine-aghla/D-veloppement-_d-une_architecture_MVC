@@ -3,6 +3,7 @@
 namespace App\Controllers\back;
 
 use App\core\Auth;
+use App\core\View;
 
 class DashboardController {
     public function index() {
@@ -12,6 +13,10 @@ class DashboardController {
         }
 
         $user = Auth::user();
-        echo "Bienvenue, " . $user['username'];
+        $view = new View();
+        $view->render('dashboard.twig', [
+            'username' => $user['username'],
+            
+        ]);
     }
 }

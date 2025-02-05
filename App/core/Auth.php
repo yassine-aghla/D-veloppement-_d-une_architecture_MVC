@@ -35,4 +35,7 @@ class Auth {
             'username' => Session::get('username')
         ];
     }
+    public static function userId() {
+        return $_SESSION['user_id'] ?? null; 
+    }
 }
